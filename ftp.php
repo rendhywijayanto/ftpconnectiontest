@@ -7,11 +7,7 @@ try {
 } catch(Exception $e) {
  $result = $e->getMessage();
 }
-if($result) {
-   print 'ok';
-} else {
-   print 'fail';
-}
+print $result;
 function checkFtp($host, $username, $password, $port = 990, $timeout = 10) {
         $con = ftp_connect($host, $port, $timeout);
         if (false === $con) {
