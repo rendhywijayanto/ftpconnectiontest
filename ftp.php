@@ -20,7 +20,8 @@ function checkFtp($host, $username, $password, $port = 21331, $timeout = 10) {
         $loggedIn = ftp_login($con,  $username,  $password);
         ftp_close($con);
         if (true === $loggedIn) {
-            return true;
+           
+            echo "Kambing";
         } else {
             throw new Exception(e);
         }
