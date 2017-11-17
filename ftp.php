@@ -2,11 +2,9 @@
 $host = '118.97.80.20';
 $password = 'sera12345#@';
 $username = 'fmsuV1#';
-try {
- $result = checkFtp($host, $username, $password);
-} catch(Exception $e) {
- $result = $e->getMessage();
-}
+
+$result = checkFtp($host, $username, $password);
+
 print ($result);
 function checkFtp($host, $username, $password, $port = 990 , $timeout = 10) {
         $con = ftp_connect($host, $port, $timeout);
