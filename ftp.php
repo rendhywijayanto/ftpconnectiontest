@@ -1,17 +1,29 @@
 <?php
-echo $_SERVER['SERVER_ADDR']."HAHAH";
-$host= '118.97.80.20:21331';
-$user = 'fmsuV1#';
+$host = '118.97.80.20';
 $password = 'sera12345#@';
-$ftpConn = ftp_connect($host);
-$login = ftp_login($ftpConn,$user,$password);
-// check connection
-if ((!$ftpConn) || (!$login)) {
- echo 'FTP connection has failed! Attempted to connect to '. $host. ' for user '.$user.'.';
-}else{
- echo 'FTP connection was a success.';
- $directory = ftp_nlist($ftpConn,'');
- echo '<pre>'.print_r($directory,true).'</pre>';
+$username = 'fmsuV1#';
+try {
+ $result = checkFtp($host, $username, $password);
+} catch(Exception $e) {
+ $result = $e->getMessage();
 }
-ftp_close($ftpConn);
+if($result) {
+   print 'ok';
+} else {
+   print 'fail';
+}
+function checkFtp($host, $username, $password, $port = 21331, $timeout = 10) {
+        $con = ftp_connect($host, $port, $timeout);
+        if (false === $con) {
+            throw new Exception('Unable to connect to FTP Server.');
+        }
+        $loggedIn = ftp_login($con,  $username,  $password);
+        ftp_close($con);
+        if (true === $loggedIn) {
+            return true;
+        } else {
+            throw new Exception(e);
+        }
+}
+
 ?>
