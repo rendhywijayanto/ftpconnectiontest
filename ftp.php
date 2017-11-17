@@ -11,7 +11,7 @@ print $result;
 function checkFtp($host, $username, $password, $port = 21331, $timeout = 10) {
         $con = ftp_connect($host, $port, $timeout);
         if (false === $con) {
-            throw new Exception('Unable to connect to FTP Server.');
+            throw new Exception(e);
         }
         $loggedIn = ftp_login($con,  $username,  $password);
         ftp_close($con);
