@@ -12,7 +12,7 @@ if($result) {
 } else {
    print 'fail';
 }
-function checkFtp($host, $username, $password, $port = 21331, $timeout = 10) {
+function checkFtp($host, $username, $password, $port = 990, $timeout = 10) {
         $con = ftp_connect($host, $port, $timeout);
         if (false === $con) {
             throw new Exception('Unable to connect to FTP Server.');
@@ -20,8 +20,7 @@ function checkFtp($host, $username, $password, $port = 21331, $timeout = 10) {
         $loggedIn = ftp_login($con,  $username,  $password);
         ftp_close($con);
         if (true === $loggedIn) {
-           
-            echo "Kambing";
+            return true;
         } else {
             throw new Exception(e);
         }
