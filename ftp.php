@@ -9,6 +9,7 @@ function checkFtp($host, $username, $password, $port = 21331, $timeout = 10) {
         $con = ftp_connect($host, $port, $timeout);
         if (false === $con) {
             throw new Exception($e);
+            return $e->getMessage();
         }
         $loggedIn = ftp_login($con,  $username,  $password);
         ftp_close($con);
@@ -16,6 +17,7 @@ function checkFtp($host, $username, $password, $port = 21331, $timeout = 10) {
             return true;
         } else {
             throw new Exception($e);
+            return $e->getMessage();
         }
 }
 
