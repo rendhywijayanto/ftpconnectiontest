@@ -1,4 +1,5 @@
 <?php
+echo $_SERVER['SERVER_ADDR'];
 $host= '118.97.80.20:21331';
 $user = 'fmsuV1#';
 $password = 'sera12345#@';
