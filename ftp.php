@@ -8,7 +8,7 @@ try {
  $result = $e->getMessage();
 }
 print ($result);
-function checkFtp($host, $username, $password, $port = , $timeout = 10) {
+function checkFtp($host, $username, $password, $port = 990 , $timeout = 10) {
         $con = ftp_connect($host, $port, $timeout);
         if (false === $con) {
             throw new Exception('Unable to connect to FTP Server.');
